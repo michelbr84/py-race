@@ -24,10 +24,12 @@
 
 #Traffic module.
 
-import pygame, os, sys, math, maps
+import pygame, os, sys, math
 from pygame.locals import *
 from random import randint
-from loader import load_image
+from src.data import maps
+from src.core.loader import load_image
+from src.core.settings import HALF_TILE
 
 BOUND_MIN = 380
 BOUND_MAX = 620
@@ -35,7 +37,6 @@ TURN_LOCK = 375
 DISPLACEMENT = 65 
 CENTER_W = -1
 CENTER_H = -1
-HALF_TILE = 500
 
 cars = []
 car_files = ['traffic1.png', 'traffic2.png', 'traffic3.png',

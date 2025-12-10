@@ -23,10 +23,11 @@
 #Camera module will keep track of sprite offset.
 
 #Player module, the car.
-import os, sys, pygame, math, maps
+import os, sys, pygame, math
 from pygame.locals import *
 from random import randint
-from loader import load_image
+from src.data import maps
+from src.core.loader import load_image
 
 GRASS_SPEED = 0.715
 GRASS_GREEN = 75

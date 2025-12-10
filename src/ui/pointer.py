@@ -22,28 +22,38 @@
 
 #Camera module will keep track of sprite offset.
 
-#Menu and game description.
-from loader import load_image
-import pygame
+#Show the player where to find the flag.
+
+import pygame, math
 from pygame.locals import *
+from src.core.loader import load_image
 
+PI = 3.14
 
-BOUND_MIN = 0
-BOUND_MAX = 1000 * 10
-NOTE_HALF_X = 211
-NOTE_HALF_Y = 242
+#rotate the arrow.
+def rot_center(image, rect, angle):
+        """rotate an image while keeping its center"""
+        rot_image = pygame.transform.rotate(image, angle)
+        rot_rect = rot_image.get_rect(center=rect.center)
+        return rot_image,rot_rect
 
-#Alert box.
-class Alert(pygame.sprite.Sprite):
+#Guide the player with a giant arrow.
+class Tracker(pygame.sprite.Sprite):
 
-    def __init__(self):
+    def __init__(self, screen_x, screen_y):
         pygame.sprite.Sprite.__init__(self)
-        self.image = load_image('menu.png')
+        self.image_orig = load_image('direction.png', False)
+        self.image = self.image_orig
         self.rect = self.image.get_rect()
-        self.x =  int(pygame.display.Info().current_w /2) - NOTE_HALF_X
-        self.y =  int(pygame.display.Info().current_h /2) - NOTE_HALF_Y
+        self.rect_orig = self.rect
+        self.x = screen_x - 150
+        self.y = screen_y - 150
         self.rect.topleft = self.x, self.y
-        self.visibility = True
+        self.dir = 0
 
-
+#Update the rotation of the arrow.
+    def update(self, point_x, point_y, target_x, target_y):
+        self.dir = (math.atan2(point_y - target_y, target_x - point_x) * 180 / PI)
+        self.image, self.rect = rot_center(self.image_orig, self.rect_orig, self.dir)
+        
     

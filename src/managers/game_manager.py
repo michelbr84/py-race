@@ -24,18 +24,16 @@
 
 #The gamemode is defined in this module.
 
-import pygame, maps
+import pygame
 from pygame.locals import *
-from loader import load_image
 from random import randint
 
-PENALTY_COOL = 180
-FLAG_SCORE = 15
-CRASH_PENALTY = -2
-HALF_TILE = 500
-FULL_TILE = 1000
-COUNTDOWN_FULL = 3600
-COUNTDOWN_EXTEND = 750
+from src.data import maps
+from src.core.loader import load_image
+from src.core.settings import *
+
+# Constants now imported from settings
+
 
 #This class is used as a single object, which moves around
 #and keeps track of player score. It also manages the countdown timer.
