@@ -58,7 +58,7 @@ py-race/
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/yourusername/py-race.git
+   git clone https://github.com/michelbr84/py-race.git
    cd py-race
    ```
 
@@ -149,7 +149,7 @@ A: It's a feature! Sticky friction is applied on non-road surfaces.
 
 ## 18. Credits
 - **Developer**: Robin Duda (chilimannen) - Original Author.
-- **Maintenance**: [Your Name/Antigravity]
+- **Maintenance**: [Michel/Antigravity]
 - **Assets**: OpenGameArt.org (Various authors).
 
 ## 19. Last Updated
