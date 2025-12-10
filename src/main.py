@@ -3,8 +3,15 @@
 # Copyright (c) 2012 Robin Duda, (chilimannen)
 
 import sys
+import os
 import pygame
 from pygame.locals import *
+
+# Add project root to sys.path so we can import 'src'
+current_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.dirname(current_dir)
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
 
 # Import settings
 from src.core.settings import TRAFFIC_COUNT, COLOR_BG, COLOR_TEXT

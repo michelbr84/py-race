@@ -51,6 +51,7 @@ def rot_center(image, rect, angle):
 
 #Initialize cars.
 def initialize(center_w, center_h):
+    global CENTER_W, CENTER_H
     CENTER_W = center_w
     CENTER_H = center_h
 

@@ -41,13 +41,13 @@ def rot_center(image, rect, angle):
         rot_rect = rot_image.get_rect(center=rect.center)
         return rot_image,rot_rect
 
-def findspawn():
+def findspawn(center_x, center_y):
     x = randint(0,9)
     y = randint(0,9)
     while(maps.map_1[y][x] == 5):
             x = randint(0,9)
             y = randint(0,9)
-    return x * 1000 + CENTER_X, y * 1000 + CENTER_Y
+    return x * 1000 + center_x, y * 1000 + center_y
 
 #define car as Player.
 class Player(pygame.sprite.Sprite):
@@ -60,10 +60,12 @@ class Player(pygame.sprite.Sprite):
         self.area = self.screen.get_rect()
         CENTER_X =  int(pygame.display.Info().current_w /2)
         CENTER_Y =  int(pygame.display.Info().current_h /2)
+        self.center_x = CENTER_X
+        self.center_y = CENTER_Y
         self.x = CENTER_X
         self.y = CENTER_Y
         self.rect.topleft = self.x, self.y
-        self.x, self.y = findspawn()
+        self.x, self.y = findspawn(self.center_x, self.center_y)
         self.dir = 0
         self.speed = 0.0
         self.maxspeed = 11.5
@@ -81,7 +83,8 @@ class Player(pygame.sprite.Sprite):
         self.dir = 0
         self.image, self.rect = rot_center(self.image_orig, self.rect, self.dir)
         self.rect.topleft = self.x, self.y
-        self.x, self.y = findspawn()
+        self.rect.topleft = self.x, self.y
+        self.x, self.y = findspawn(self.center_x, self.center_y)
             
 #Emit tracks..
     def emit_tracks(self):
