@@ -104,17 +104,19 @@ To verify functionality:
 ## 11. ToDo / Roadmap
 
 **Completed Tasks**
-- [x] Full codebase refactoring.
+- [x] Full codebase refactoring (v2.0).
 - [x] Separation of concerns (Entities vs Data).
 - [x] Modular directory structure.
+- [x] **Procedural Level Generation** (Seed-based).
+- [x] **Start Menu** with Seed Input.
 
 **In Progress**
 - [ ] Sound effects integration.
 
 **Planned / Future Tasks**
-- [ ] Main Menu screen.
 - [ ] High score saving.
 - [ ] Multiple level support.
+- [ ] Advanced Settings Menu (Resolution, Volume).
 
 ## 12. Known Issues
 - Traffic cars may occasionally overlap at spawn.
