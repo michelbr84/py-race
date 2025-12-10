@@ -20,6 +20,10 @@ class StartMenu:
         self.input_rect = pygame.Rect(center_w - 100, center_h - 25, 200, 50)
         self.start_button = pygame.Rect(center_w - 75, center_h + 50, 150, 50)
         
+        # Sounds
+        from src.core.loader import load_sound
+        self.snd_start = load_sound('start.mp3')
+        
     def run(self):
         clock = pygame.time.Clock()
         
@@ -36,6 +40,7 @@ class StartMenu:
                     
                     if self.input_active:
                         if event.key == K_RETURN:
+                            self.snd_start.play()
                             self.running = False # Start game
                         elif event.key == K_BACKSPACE:
                             self.seed_input = self.seed_input[:-1]
@@ -51,6 +56,7 @@ class StartMenu:
                         self.input_active = False
                         
                     if self.start_button.collidepoint(event.pos):
+                        self.snd_start.play()
                         self.running = False
             
             # Render Title

@@ -109,9 +109,10 @@ To verify functionality:
 - [x] Modular directory structure.
 - [x] **Procedural Level Generation** (Seed-based).
 - [x] **Start Menu** with Seed Input.
+- [x] **Sound Effects Integration**.
 
 **In Progress**
-- [ ] Sound effects integration.
+- [ ] Final Verification.
 
 **Planned / Future Tasks**
 - [ ] High score saving.

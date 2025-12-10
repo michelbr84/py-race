@@ -27,7 +27,8 @@ import os, sys, pygame, math
 from pygame.locals import *
 from random import randint
 from src.data import maps
-from src.core.loader import load_image
+
+from src.core.loader import load_image, load_sound
 
 GRASS_SPEED = 0.715
 GRASS_GREEN = 75
@@ -58,6 +59,14 @@ class Player(pygame.sprite.Sprite):
         self.image_orig = self.image
         self.screen = pygame.display.get_surface()
         self.area = self.screen.get_rect()
+        
+        # Sounds
+        self.snd_crash = load_sound('crash.mp3')
+        self.snd_engine = load_sound('engine.mp3')
+        self.snd_offroad = load_sound('offroad.mp3')
+        # Play engine loop
+        self.snd_engine.play(-1)
+        self.snd_engine.set_volume(0.3)
         CENTER_X =  int(pygame.display.Info().current_w /2)
         CENTER_Y =  int(pygame.display.Info().current_h /2)
         self.center_x = CENTER_X
@@ -100,6 +109,7 @@ class Player(pygame.sprite.Sprite):
             if self.speed - self.deacceleration > GRASS_SPEED * 2:
                 self.speed = self.speed - self.deacceleration * 2
                 self.emit_tracks()
+                self.snd_offroad.play()
 
 #Push back on impact
     def impact(self):

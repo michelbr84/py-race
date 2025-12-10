@@ -23,7 +23,7 @@
 #Camera module will keep track of sprite offset.
 
 #Show a dialog when time is out.
-from src.core.loader import load_image
+from src.core.loader import load_image, load_sound
 import pygame
 from pygame.locals import *
 
@@ -41,6 +41,11 @@ class Alert(pygame.sprite.Sprite):
         self.x =  int(pygame.display.Info().current_w /2) - NOTE_HALF_X
         self.y =  int(pygame.display.Info().current_h /2) - NOTE_HALF_Y
         self.rect.topleft = self.x, self.y
+        self.snd_game_over = load_sound('game_over.mp3')
+
+    def appear(self):
+        self.snd_game_over.play()
+        self.screen.blit(self.image, self.rect)
 
 
 

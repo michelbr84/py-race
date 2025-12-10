@@ -23,7 +23,7 @@
 #Camera module will keep track of sprite offset.
 
 #Alert shown when the car is outside the map.
-from src.core.loader import load_image
+from src.core.loader import load_image, load_sound
 import pygame
 from pygame.locals import *
 
@@ -51,6 +51,11 @@ class Alert(pygame.sprite.Sprite):
         self.x =  int(pygame.display.Info().current_w /2) - NOTE_HALF_X
         self.y =  int(pygame.display.Info().current_h /2) - NOTE_HALF_Y
         self.rect.topleft = self.x, self.y
+        self.snd_bump = load_sound('bump.mp3')
+
+    def appear(self):
+        self.snd_bump.play()
+        self.screen.blit(self.image, self.rect)
 
 
     

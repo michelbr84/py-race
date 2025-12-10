@@ -45,3 +45,18 @@ def load_image(file, transparent = True):
     else:
         image = image.convert_alpha()
     return image
+
+def load_sound(file):
+    class NoneSound:
+        def play(self): pass
+
+    if not pygame.mixer or not pygame.mixer.get_init():
+        return NoneSound()
+
+    fullname = os.path.join('src', 'assets', 'sounds', file)
+    try:
+        sound = pygame.mixer.Sound(fullname)
+    except pygame.error as e:
+        print(f"Cannot load sound: {fullname}")
+        return NoneSound()
+    return sound

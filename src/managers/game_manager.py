@@ -29,7 +29,7 @@ from pygame.locals import *
 from random import randint
 
 from src.data import maps
-from src.core.loader import load_image
+from src.core.loader import load_image, load_sound
 from src.core.settings import *
 
 # Constants now imported from settings
@@ -42,6 +42,7 @@ class Finish(pygame.sprite.Sprite):
     def claim_flag(self):
         self.score += FLAG_SCORE
         self.timeleft += COUNTDOWN_EXTEND
+        self.snd_score.play()
         if self.timeleft > COUNTDOWN_FULL:
             self.timeleft = COUNTDOWN_FULL
 #The player has crashed into another vehicle, deduct some points.
@@ -71,6 +72,7 @@ class Finish(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = load_image('finish.png', False)
         self.rect = self.image.get_rect()
+        self.snd_score = load_sound('score.mp3')
         self.x = 5
         self.y = 5
         self.penalty_cool = PENALTY_COOL
