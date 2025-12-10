@@ -22,6 +22,7 @@ This project was created to demonstrate:
 - **Interactive Map**: A tile-based map system with varying friction surfaces.
 - **Objective System**: Chase the checkered flag to extend your time and boost your score.
 - **Visual Feedback**: Tire tracks, collision alerts, and HUD overlays.
+- **Procedural Generation**: Enter a seed to generate unique, deterministic track layouts every time you play.
 
 ## 4. Architecture Overview
 The project follows a **domain-driven, modular architecture** to separate concerns and improve maintainability.

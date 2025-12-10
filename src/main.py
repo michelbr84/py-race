@@ -31,6 +31,11 @@ from src.entities.map_tile import MapTile
 from src.managers import game_manager as gamemode
 
 # Import UI
+# Import generator and menu
+from src.core import generator
+from src.ui.start_menu import StartMenu
+
+# Import UI
 from src.ui import pointer, menu, bounds_alert, timeout_alert
 
 # Main function.
@@ -39,16 +44,29 @@ def main():
     clock = pygame.time.Clock()
     running = True
     font = pygame.font.Font(None, 24)
+    
+    # Calculate center based on current display
+    center_w = int(pygame.display.Info().current_w / 2)
+    center_h = int(pygame.display.Info().current_h / 2)
+
+    # 1. Run Start Menu
+    start_menu_inst = StartMenu(screen)
+    seed = start_menu_inst.run()
+    
+    if seed is None:
+        pygame.quit()
+        sys.exit(0)
+        
+    # 2. Generate Map
+    generator.generate_map(seed)
+
+    # 3. Initialize Game Objects
     car = player.Player()
     cam = camera.Camera()
     target = gamemode.Finish()
     bound_alert = bounds_alert.Alert()
     time_alert = timeout_alert.Alert()
-    info = menu.Alert()
-    
-    # Calculate center based on current display
-    center_w = int(pygame.display.Info().current_w / 2)
-    center_h = int(pygame.display.Info().current_h / 2)
+    info = menu.Alert() # Note: 'menu' here is the in-game alert menu, not StartMenu
     
     ptr = pointer.Tracker(int(center_w * 2), int(center_h * 2))
 
@@ -64,8 +82,6 @@ def main():
     menu_alert_s = pygame.sprite.Group()
 
     # generate tiles
-    # Load map images locally to this scope or use a resource manager. 
-    # For now, we load them into a list as per original logic but cleaner.
     loaded_map_images = []
     for tile_name in maps.map_tile:
         loaded_map_images.append(load_image(tile_name, False))
