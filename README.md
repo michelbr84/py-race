@@ -111,9 +111,10 @@ To verify functionality:
 - [x] **Start Menu** with Seed Input.
 - [x] **Sound Effects Integration**.
 - [x] **Advanced Features** (High Score, Levels, Settings).
+- [x] Final Polish.
 
 **In Progress**
-- [ ] Final Polish.
+- [ ] No active tasks.
 
 **Planned / Future Tasks**
 - [ ] Online Leaderboards.
