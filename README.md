@@ -110,14 +110,13 @@ To verify functionality:
 - [x] **Procedural Level Generation** (Seed-based).
 - [x] **Start Menu** with Seed Input.
 - [x] **Sound Effects Integration**.
+- [x] **Advanced Features** (High Score, Levels, Settings).
 
 **In Progress**
-- [ ] Final Verification.
+- [ ] Final Polish.
 
 **Planned / Future Tasks**
-- [ ] High score saving.
-- [ ] Multiple level support.
-- [ ] Advanced Settings Menu (Resolution, Volume).
+- [ ] Online Leaderboards.
 
 ## 12. Known Issues
 - Traffic cars may occasionally overlap at spawn.

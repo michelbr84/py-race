@@ -45,5 +45,9 @@ class Alert(pygame.sprite.Sprite):
         self.rect.topleft = self.x, self.y
         self.visibility = True
 
+    def appear(self):
+        screen = pygame.display.get_surface()
+        screen.blit(self.image, self.rect)
+
 
     

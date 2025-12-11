@@ -52,6 +52,7 @@ class Alert(pygame.sprite.Sprite):
         self.y =  int(pygame.display.Info().current_h /2) - NOTE_HALF_Y
         self.rect.topleft = self.x, self.y
         self.snd_bump = load_sound('bump.mp3')
+        self.screen = pygame.display.get_surface()
 
     def appear(self):
         self.snd_bump.play()

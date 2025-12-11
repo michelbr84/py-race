@@ -66,9 +66,10 @@ class Finish(pygame.sprite.Sprite):
         self.timeleft = COUNTDOWN_FULL
         self.score = 0
         self.generate_finish()
+        self.high_score_reached = False
         
 #Initialize.. yes.
-    def __init__(self):
+    def __init__(self, score_manager):
         pygame.sprite.Sprite.__init__(self)
         self.image = load_image('finish.png', False)
         self.rect = self.image.get_rect()
@@ -80,12 +81,21 @@ class Finish(pygame.sprite.Sprite):
         self.rect.topleft = self.x, self.y
         self.score = 0
         self.timeleft = COUNTDOWN_FULL
+        self.score_manager = score_manager
+        self.high_score_reached = False
 
 #Update the timer and reposition the flag by offset.
     def update(self, cam_x, cam_y):
         self.rect.topleft = self.x - cam_x, self.y - cam_y
         if (self.penalty_cool > 0):
             self.penalty_cool -= 1
+            
         if (self.timeleft > 0):
             self.timeleft -= 1
+        else:
+            # Game Over Logic check
+            if not self.high_score_reached:
+                if self.score_manager.save_high_score(self.score):
+                    print(f"New High Score Saved: {self.score}")
+                self.high_score_reached = True
         

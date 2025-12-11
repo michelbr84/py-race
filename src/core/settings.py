@@ -20,3 +20,11 @@ COUNTDOWN_EXTEND = 750
 # Colors
 COLOR_TEXT = (224, 16, 16)
 COLOR_BG = (26, 26, 26)
+
+# Level Presets
+LEVEL_PROFILES = {
+    "Custom": None,
+    "Level 1 (Easy)": "101",
+    "Level 2 (Mixed)": "202",
+    "Level 3 (Crazy)": "303"
+}
