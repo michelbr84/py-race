@@ -33,14 +33,6 @@ BOUND_MAX = 1000 * 10
 NOTE_HALF_X = 211
 NOTE_HALF_Y = 112
 
-#check the bounds vs car coordinates.
-def breaking(car_x, car_y):
-    if car_x < BOUND_MIN or car_x > BOUND_MAX:
-       return True
-    if (car_y < BOUND_MIN or car_y > BOUND_MAX):
-        return True
-    return False
-
 #alertbox.
 class Alert(pygame.sprite.Sprite):
 
@@ -53,6 +45,14 @@ class Alert(pygame.sprite.Sprite):
         self.rect.topleft = self.x, self.y
         self.snd_bump = load_sound('bump.mp3')
         self.screen = pygame.display.get_surface()
+
+    #check the bounds vs car coordinates.
+    def breaking(self, car_x, car_y):
+        if car_x < BOUND_MIN or car_x > BOUND_MAX:
+           return True
+        if (car_y < BOUND_MIN or car_y > BOUND_MAX):
+            return True
+        return False
 
     def appear(self):
         self.snd_bump.play()

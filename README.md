@@ -74,9 +74,22 @@ py-race/
    ```bash
    python src/main.py
    ```
+   ```
    *Note: Ensure you run it from the root directory so asset paths resolve correctly.*
 
-## 7. Usage Guide
+## 7. How to Build (Executable)
+To create a standalone `.exe` file:
+1. Install PyInstaller:
+   ```bash
+   pip install pyinstaller
+   ```
+2. Run the build script:
+   ```bash
+   pyinstaller build.spec
+   ```
+3. The executable will be in the `dist/` folder.
+
+## 8. Usage Guide
 - **Launch**: Run `src/main.py`.
 - **Objective**: Drive to the **Checkered Flag** to gain time and points. Avoid crashing into traffic!
 - **Controls**:
@@ -85,23 +98,23 @@ py-race/
     - **M**: Toggle Menu/Info.
     - **ESC**: Quit Game.
 
-## 8. Configuration Options
+## 9. Configuration Options
 Adjust gameplay settings in `src/core/settings.py`:
 - `TRAFFIC_COUNT`: Number of AI cars (Default: 45).
 - `COUNTDOWN_FULL`: Initial time limit.
 - `FLAG_SCORE`: Points awarded per flag.
 
-## 9. API Documentation
+## 10. API Documentation
 *Not applicable for this standalone game.*
 
-## 10. Testing Instructions
+## 11. Testing Instructions
 Currently, the project relies on manual testing.
 To verify functionality:
 1. Run the game.
 2. Ensure assets load without error.
 3. Check collisions with borders and traffic.
 
-## 11. ToDo / Roadmap
+## 12. ToDo / Roadmap
 
 **Completed Tasks**
 - [x] Full codebase refactoring (v2.0).

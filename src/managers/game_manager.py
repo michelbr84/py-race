@@ -43,6 +43,9 @@ class Finish(pygame.sprite.Sprite):
         self.score += FLAG_SCORE
         self.timeleft += COUNTDOWN_EXTEND
         self.snd_score.play()
+        if self.text_manager:
+            self.text_manager.add(self.rect.x, self.rect.y, f"+{FLAG_SCORE}", (255, 255, 0))
+            self.text_manager.add(self.rect.x, self.rect.y - 30, f"+{COUNTDOWN_EXTEND}s", (0, 255, 0))
         if self.timeleft > COUNTDOWN_FULL:
             self.timeleft = COUNTDOWN_FULL
 #The player has crashed into another vehicle, deduct some points.
@@ -50,6 +53,8 @@ class Finish(pygame.sprite.Sprite):
         if (self.penalty_cool == 0):
             self.score += CRASH_PENALTY
             self.penalty_cool = PENALTY_COOL
+            if self.text_manager:
+                self.text_manager.add(self.x, self.y, f"{CRASH_PENALTY}", (255, 0, 0))
 #Find an adequate point to spawn flag.     
     def generate_finish(self):
         x = randint(0,9)
@@ -69,7 +74,7 @@ class Finish(pygame.sprite.Sprite):
         self.high_score_reached = False
         
 #Initialize.. yes.
-    def __init__(self, score_manager):
+    def __init__(self, score_manager, text_manager):
         pygame.sprite.Sprite.__init__(self)
         self.image = load_image('finish.png', False)
         self.rect = self.image.get_rect()
@@ -82,6 +87,7 @@ class Finish(pygame.sprite.Sprite):
         self.score = 0
         self.timeleft = COUNTDOWN_FULL
         self.score_manager = score_manager
+        self.text_manager = text_manager
         self.high_score_reached = False
 
 #Update the timer and reposition the flag by offset.
